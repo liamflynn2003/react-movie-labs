@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from '../components/templateMovieListPage'
 import { getMovies } from "../api/tmdb-api";
-import { getMovies } from "../api/tmdb-api";
 
 const HomePage = (props) => {
   const [movies, setMovies] = useState([]);
