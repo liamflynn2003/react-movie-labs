@@ -10,7 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
-import { getGenres } from "../api/tmdb-api";
+import { getGenres } from "../../api/tmdb-api";
 
 const formControl = 
   {
@@ -20,7 +20,8 @@ const formControl =
   };
 
 export default function FilterMoviesCard(props) {
-
+  const [genres, setGenres] = useState([{ id: '0', name: "All" }])
+  
   useEffect(() => {
     getGenres().then((allGenres) => {
       setGenres([genres[0], ...allGenres]);
@@ -30,8 +31,8 @@ export default function FilterMoviesCard(props) {
 
   const handleChange = (e, type, value) => {
     e.preventDefault()
-    // Completed later
-  };
+    props.onUserInput(type, value)   // NEW
+  }
   const handleTextChange = e => {
     handleChange(e, "name", e.target.value)
   }
@@ -62,9 +63,12 @@ export default function FilterMoviesCard(props) {
         <FormControl sx={{...formControl}}>
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
-            labelId="genre-label"
-            id="genre-select"
-          >
+    labelId="genre-label"
+    id="genre-select"
+    defaultValue=""
+    value={props.genreFilter}
+    onChange={handleGenreChange}
+  >
             {genres.map((genre) => {
               return (
                 <MenuItem key={genre.id} value={genre.id}>
