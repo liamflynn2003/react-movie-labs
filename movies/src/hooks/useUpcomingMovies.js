@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import {getMovie} from '../api/tmdb-api'
+import {getUpcomingMovies} from '../api/tmdb-api'
 
-const useMovie = id => {
+const useUpcomingMovie = id => {
   const [movie, setMovie] = useState(null);
   useEffect(() => {
-    getMovie(id).then(movie => {
+    getUpcomingMovies(id).then(upcomingMovie => {
       setMovie(movie);
     });
   }, [id]);
   return [movie, setMovie];
 };
 
-export default useMovie;
+export default useUpcomingMovie;

@@ -21,6 +21,14 @@ export const getMovies = () => {
       .then(res => res.json())
       .then(json => json.genres);
   };
+
+  export const getUpcomingMovies = () => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+      .then(res => res.json())
+      .then(json => json.results);
+  };
   
   export const getMovieImages = (id) => {
     return fetch(
