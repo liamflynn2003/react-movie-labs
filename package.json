@@ -13,6 +13,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "dependencies": {
+    "react-hook-form": "^7.48.2",
     "react-router-dom": "^6.17.0"
   }
 }
